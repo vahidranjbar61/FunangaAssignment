@@ -15,7 +15,7 @@ class AuthController extends AbstractController
     public function login(#[CurrentUser] ?User $user): ?JsonResponse
     {
         return new JsonResponse([
-            'username' => $user->getUserIdentifier(),
+            'email' => $user->getUserIdentifier(),
             'statusCode' => Response::HTTP_OK,
             'message' => 'You logged in'
         ]);
