@@ -6,6 +6,7 @@ use App\Dto\UserCreateDto;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -15,7 +16,7 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, private UserPasswordHasherInterface $passwordHasher)
     {
         parent::__construct($registry, User::class);
     }
@@ -36,9 +37,13 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     public function add(UserCreateDto $userDto, bool $flush = false): void
     {
-        $user = new User( );
+        $user = new User();
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $user,
+            $userDto->password
+        );
         $user->setEmail($userDto->email);
-        $user->setPassword($userDto->password);
+        $user->setPassword($hashedPassword);
         $this->getEntityManager()->persist($user);
 
         if ($flush) {

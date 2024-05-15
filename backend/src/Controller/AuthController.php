@@ -14,13 +14,6 @@ class AuthController extends AbstractController
     #[Route('/login', name: 'app_login', methods: ['POST'])]
     public function login(#[CurrentUser] ?User $user): ?JsonResponse
     {
-        if ($user === null) {
-            return new JsonResponse([
-                'statusCode' => Response::HTTP_UNAUTHORIZED,
-                'message' => 'Invalid credentials',
-            ]);
-        }
-
         return new JsonResponse([
             'username' => $user->getUserIdentifier(),
             'statusCode' => Response::HTTP_OK,
