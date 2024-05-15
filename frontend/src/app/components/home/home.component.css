@@ -1,0 +1,9 @@
+h1 {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  color: #9310bf;
+}
