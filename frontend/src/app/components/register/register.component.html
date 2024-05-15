@@ -4,12 +4,12 @@
     <h1>Register</h1>
     <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <input type="email" formControlName="email" placeholder="Enter your email">
-      <app-form-error [errorMessage]="getFormControlError('email')"></app-form-error>
+      <app-form-error [form]="registerForm" [controlName]="'email'"></app-form-error>
 
       <input type="password" formControlName="password" placeholder="Enter your password">
-      <app-form-error [errorMessage]="getFormControlError('password')"></app-form-error>
+      <app-form-error [form]="registerForm" [controlName]="'password'"></app-form-error>
 
-      <button type="submit" [disabled]="registerForm.invalid">Login</button>
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
     </form>
   </div>
 </div>

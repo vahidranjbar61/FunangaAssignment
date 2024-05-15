@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HttpService, LoginRequest, LoginResponse} from "../../services/http.service";
 import {Router} from "@angular/router";
-import {emailErrors, passwordErrors} from "../../common/util";
 
 @Component({
   selector: 'app-login',
@@ -23,25 +22,6 @@ export class LoginComponent {
       rememberMe: [false]
     });
   }
-
-  public getFormControlError(controlName: string): string | null {
-    const control = this.loginForm.get(controlName);
-    if (control?.invalid && control?.touched) {
-      if (controlName === 'email') {
-        if (control.errors?.['required']) {
-          return emailErrors['required'];
-        } else if (control.errors?.['email']) {
-          return emailErrors['email'];
-        }
-      } else if (controlName === 'password') {
-        if (control.errors?.['required']) {
-          return passwordErrors['required'];
-        }
-      }
-    }
-    return null;
-  }
-
 
   public onSubmit(): void {
     if (this.loginForm.invalid) {

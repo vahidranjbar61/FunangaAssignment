@@ -4,10 +4,10 @@
     <h1>Login</h1>
     <form class="register-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <input type="email" formControlName="email" placeholder="Enter your email">
-      <app-form-error [errorMessage]="getFormControlError('email')"></app-form-error>
+      <app-form-error [form]="loginForm" [controlName]="'email'"></app-form-error>
 
       <input type="password" formControlName="password" placeholder="Enter your password">
-      <app-form-error [errorMessage]="getFormControlError('password')"></app-form-error>
+      <app-form-error [form]="loginForm" [controlName]="'password'"></app-form-error>
 
       <div class="remember-me">
         <input type="checkbox" formControlName="rememberMe">
