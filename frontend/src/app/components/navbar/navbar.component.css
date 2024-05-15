@@ -26,8 +26,12 @@
   text-decoration: none;
   padding: 6px;
   align-self: center;
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  border-radius: 8px;
 }
 
 .navbar a:hover {
-  color: #9310bf;
+  background-color: #c66ee3;
+  color: white;
+  cursor: pointer;
 }

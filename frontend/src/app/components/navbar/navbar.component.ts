@@ -7,4 +7,5 @@ import {Component, Input} from '@angular/core';
 })
 export class NavbarComponent {
   @Input() loggedIn = false;
+  @Input() hideRegister = false;
 }

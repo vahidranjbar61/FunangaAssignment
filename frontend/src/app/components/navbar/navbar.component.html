@@ -2,5 +2,6 @@
   <div class="header">
     <h1>Funanga Assignment</h1>
     <a *ngIf="loggedIn" href="/login">Logout</a>
+    <a *ngIf="!loggedIn && !hideRegister" href="/register">Register</a>
   </div>
 </nav>

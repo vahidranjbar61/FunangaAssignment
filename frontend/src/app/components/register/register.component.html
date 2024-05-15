@@ -1,5 +1,5 @@
 <div>
-  <app-navbar></app-navbar>
+  <app-navbar [hideRegister]="true"></app-navbar>
   <div class="content">
     <h1>Register</h1>
     <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
